@@ -1,38 +1,30 @@
 //!LeetCode problem 1299 - 'Easy'
 
 //? Problem Statement:
-//* Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.
+//* Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1
 
-//* After doing so, return the array.
+//* After doing so, return the array
 
 /**
- * Input array: [17, 18, 5, 4, 6, 1]
- * Output: [18, 6, 6, 6, 1, -1]
+ ** Input array: [17, 18, 5, 4, 6, 1]
+ ** Output: [18, 6, 6, 6, 1, -1]
  */
 
+//! SOLUTION Notes:
+//* 1) Reverse Iterate to have a O(N) solution
+//* 2) Fence Post 'oldMax = -1'
+//* 3) Swap Concept -> use 'arr[i]' in 1st statement, before overwriting in next, with the old value. Similar to swapping values in an array. It'll be used for next iteration
 const arr = [17, 18, 5, 4, 6, 1]; 
-
 console.log(arr);
 
-//* Fence Post Setup
-let N = arr.length;
-let tempVal = arr[N - 2];
-arr[N - 2] = arr[N - 1];
-let max;
+let oldMax = -1;
+let newMax;
 
-//* Loop w/ Reassign from the Right
-
-for(i = N - 3; i >= 0; i--){
-    max = Math.max(tempVal, arr[i + 1]);
-    tempVal = arr[i];
-    arr[i] = max;
+for(let i = arr.length - 1; i >= 0; i--){
+    newMax = Math.max(oldMax, arr[i]);
+    arr[i] = oldMax;
+    oldMax = newMax;
 }
 
-arr[N - 1] = -1;
-
 console.log(arr);
-
-
-//* Note:
-//* Solution Does not account for arr < size = 3.
 
