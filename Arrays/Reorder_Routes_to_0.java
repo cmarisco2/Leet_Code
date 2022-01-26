@@ -15,13 +15,28 @@ package Arrays;
 
 class Reorder_Routes_to_0 {
     public Node [] adj;
+    public boolean [] visited;
+    int count;
 
     public Reorder_Routes_to_0(int size){
         adj = new Node [size];
+        visited = new boolean [size];
+    }
+
+    public void dfs(int source){
+        visited[source] = true;
+        if(adj(source).away == false) count++;
+        Node w = adj(source);
+        for(int i = 0; w != null && i < w.size; i++, w = w.next){
+            if(!visited[w.vertex]){
+                dfs(w.vertex);
+            }
+        }
     }
 
     private class Node{
         int vertex;
+        int size = 1;
         Boolean away;
         Node next;
     }
@@ -45,6 +60,8 @@ class Reorder_Routes_to_0 {
 
         from.next = adj[to.vertex];
         adj[to.vertex] = from;
+        from.size++;
+        to.size++;
 
     }
 
@@ -53,14 +70,14 @@ class Reorder_Routes_to_0 {
     }
 
     public static void main(String[] args) {
-        Reorder_Routes_to_0 nodes = new Reorder_Routes_to_0(2);
-        int [] input = { 0, 1 };
-        nodes.addEdge(input);
-        // for(int i = 0; i < 2; i++){
-        //     System.out.println(nodes.adj[i]);
-        // }
-        for(int i = 0; i < 2; i++){
-            System.out.println(nodes.adj[i].vertex + ", " + nodes.adj[i].away + ", " + nodes.adj[i].next);
-        }
+        int size = 6;
+        Reorder_Routes_to_0 nodes = new Reorder_Routes_to_0(size);
+
+        int [][] input = { { 0, 1 }, { 1, 3 }, { 2, 3 }, { 4, 0 }, { 4,5 } };
+        for(int[] arr: input)
+            nodes.addEdge(arr);
+
+        nodes.dfs(0);
+        System.out.println("Number of edges to fix is: " + nodes.count);
     }
 }
