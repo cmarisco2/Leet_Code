@@ -14,11 +14,15 @@ package Arrays;
 //* Build own Graph out of 2D array inputs for linear traversal
 
 class Reorder_Routes_to_0 {
-    Node [] adj;
+    public Node [] adj;
+
+    public Reorder_Routes_to_0(int size){
+        adj = new Node [size];
+    }
 
     private class Node{
         int vertex;
-        Boolean source;
+        Boolean away;
         Node next;
     }
 
@@ -29,9 +33,34 @@ class Reorder_Routes_to_0 {
     public void addEdge(int [] arr){
         Node from = new Node();
         Node to = new Node();
+
         from.vertex = arr[0];
         to.vertex = arr[1];
-        from.source = true;
-        to.source = false;
+
+        from.away = false;
+        to.away = true;
+
+        to.next = adj[from.vertex];
+        adj[from.vertex] = to;
+
+        from.next = adj[to.vertex];
+        adj[to.vertex] = from;
+
+    }
+
+    public Node adj(int vertex){
+        return adj[vertex];
+    }
+
+    public static void main(String[] args) {
+        Reorder_Routes_to_0 nodes = new Reorder_Routes_to_0(2);
+        int [] input = { 0, 1 };
+        nodes.addEdge(input);
+        // for(int i = 0; i < 2; i++){
+        //     System.out.println(nodes.adj[i]);
+        // }
+        for(int i = 0; i < 2; i++){
+            System.out.println(nodes.adj[i].vertex + ", " + nodes.adj[i].away + ", " + nodes.adj[i].next);
+        }
     }
 }
