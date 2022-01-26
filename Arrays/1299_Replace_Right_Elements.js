@@ -1,19 +1,20 @@
-//!LeetCode problem 1299 - 'Easy'
+//? LeetCode problem 1299 - 'Easy'
 
-//? Problem Statement:
-//* Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1
+// Problem Statement:
+// Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1
 
-//* After doing so, return the array
+// After doing so, return the array
 
 /**
- ** Input array: [17, 18, 5, 4, 6, 1]
- ** Output: [18, 6, 6, 6, 1, -1]
+ * Input array: [17, 18, 5, 4, 6, 1]
+ * Output: [18, 6, 6, 6, 1, -1]
  */
 
-//! SOLUTION Notes:
-//* 1) Reverse Iterate to have a O(N) solution
-//* 2) Fence Post 'oldMax = -1'
-//* 3) Swap Concept -> use 'arr[i]' in 1st statement, before overwriting in next, with the old value. Similar to swapping values in an array. It'll be used for next iteration
+//? SOLUTION Notes:
+//* 1) Reverse Iterate
+//* 2) oldMax = -1 (before loop)
+//* 3) newMax = max(oldMax, arr[i])
+
 const arr = [17, 18, 5, 4, 6, 1]; 
 console.log(arr);
 
