@@ -11,7 +11,7 @@
 
 package Arrays;
 
-//* Build own Graph out of 2D array inputs for linear traversal
+//* Build Graph out of 2D array inputs for linear traversal
 
 class Reorder_Routes_to_0 {
     public Node [] adj;
