@@ -17,15 +17,17 @@ class Reorder_Routes_to_0 {
     public Node [] adj;
     public boolean [] visited;
     int count;
+    int SOURCE;
 
-    public Reorder_Routes_to_0(int size){
+    public Reorder_Routes_to_0(int size, int source){
+        SOURCE = source;
         adj = new Node [size];
         visited = new boolean [size];
     }
 
     public void dfs(int source){
         visited[source] = true;
-        if(adj(source).away) count++;
+        if(adj(source).away && adj(source).vertex != SOURCE) count++;
         Node w = adj(source);
         for(int i = 0; w != null && i < w.size; i++, w = w.next){
             if(!visited[w.vertex]){
@@ -71,7 +73,7 @@ class Reorder_Routes_to_0 {
 
     public static void demoCount(int theSize, int [][] connections, int source){
         int size = theSize;
-        Reorder_Routes_to_0 nodes = new Reorder_Routes_to_0(size);
+        Reorder_Routes_to_0 nodes = new Reorder_Routes_to_0(size, source);
         for(int[] arr: connections)
             nodes.addEdge(arr);
         
@@ -80,16 +82,19 @@ class Reorder_Routes_to_0 {
     }
 
     public static void main(String[] args) {
+        int source = 0;
 
         int[][] connections = { { 0, 1 }, { 1, 3 }, { 2, 3 }, { 4, 0 }, { 4, 5 } };
-        int source = 0;
         int size = 6;
-        demoCount(size, connections, source);
+        demoCount(size, connections, source); //expected output: 3
 
         int [][] edges = { { 1, 0 }, { 1, 2 }, { 3, 2 }, { 3, 4 } };
         size = 5;
+        demoCount(size, edges, source); //expected output: 2
 
-        demoCount(5, edges, source);
+        int [][] paths = { { 1, 0 }, { 2, 0} };
+        size = 3;
+        demoCount(size, paths, source); //expected output: 0
 
     }
 }
