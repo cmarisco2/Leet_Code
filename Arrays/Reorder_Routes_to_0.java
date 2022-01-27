@@ -25,7 +25,7 @@ class Reorder_Routes_to_0 {
 
     public void dfs(int source){
         visited[source] = true;
-        if(adj(source).away == false) count++;
+        if(adj(source).away) count++;
         Node w = adj(source);
         for(int i = 0; w != null && i < w.size; i++, w = w.next){
             if(!visited[w.vertex]){
@@ -69,15 +69,27 @@ class Reorder_Routes_to_0 {
         return adj[vertex];
     }
 
-    public static void main(String[] args) {
-        int size = 6;
+    public static void demoCount(int theSize, int [][] connections, int source){
+        int size = theSize;
         Reorder_Routes_to_0 nodes = new Reorder_Routes_to_0(size);
-
-        int [][] input = { { 0, 1 }, { 1, 3 }, { 2, 3 }, { 4, 0 }, { 4,5 } };
-        for(int[] arr: input)
+        for(int[] arr: connections)
             nodes.addEdge(arr);
-
-        nodes.dfs(0);
+        
+        nodes.dfs(source);
         System.out.println("Number of edges to fix is: " + nodes.count);
+    }
+
+    public static void main(String[] args) {
+
+        int[][] connections = { { 0, 1 }, { 1, 3 }, { 2, 3 }, { 4, 0 }, { 4, 5 } };
+        int source = 0;
+        int size = 6;
+        demoCount(size, connections, source);
+
+        int [][] edges = { { 1, 0 }, { 1, 2 }, { 3, 2 }, { 3, 4 } };
+        size = 5;
+
+        demoCount(5, edges, source);
+
     }
 }
