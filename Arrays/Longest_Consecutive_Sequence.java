@@ -1,3 +1,5 @@
+//! Meta-Note: This Problem is a variation of unordered array problems solved in linear time by using a set/hashmap to check for membership (consecutive/complement/etc)
+
 //? Problem Statement:
 // Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
 
@@ -10,12 +12,12 @@
 package Arrays;
 import java.util.HashSet;
 
-//? Solution Concept:
-    //* 1) Number Line Visualization(Human Intuition):
+//* Solution Concept:
+    //? 1) Number Line Visualization(Human Intuition):
             //* If No Left Neighbor Exists -> Beginning of Sequence
             //* ....x,x,x,1,2,3,4,x,x,x....100....200....
-    //* 2) Array -> Set
-    //* 3) Iterate Array, member checking Left/Right Neighbors in Set (LN = Left Neighbor)
+    //? 2) Array -> Set
+    //? 3) Iterate Array, member checking Left/Right Neighbors in Set (LN = Left Neighbor)
             //* IF Have LN -> continue;
             //* ELSE -> count RN present in Set.
     //* Time Complexity = O(N), O(N) Extra Space
