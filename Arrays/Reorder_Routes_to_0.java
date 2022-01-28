@@ -87,14 +87,17 @@ class Reorder_Routes_to_0 {
         int[][] connections = { { 0, 1 }, { 1, 3 }, { 2, 3 }, { 4, 0 }, { 4, 5 } };
         int size = 6;
         demoCount(size, connections, source); //expected output: 3
-
+        
         int [][] edges = { { 1, 0 }, { 1, 2 }, { 3, 2 }, { 3, 4 } };
         size = 5;
         demoCount(size, edges, source); //expected output: 2
-
+        
         int [][] paths = { { 1, 0 }, { 2, 0} };
         size = 3;
         demoCount(size, paths, source); //expected output: 0
-
+        
+        int[][] tree = { { 0, 4 }, { 1, 0 }, { 1, 3 }, { 3, 5 }, { 5, 7 }, { 2, 4 }, { 2, 6 } };
+        size = 8;
+        demoCount(size, tree, source); //expected output: 5
     }
 }
