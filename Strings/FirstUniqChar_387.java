@@ -9,8 +9,8 @@
 //If it does not exist,return-1.
 
 //? Example 1
-//? Input: s = 'leetcode';
-//? Output: 0
+//? Input: s = 'loveleetcode';
+//? Output: 2
 
 //? Example 2
 //? Input: s = 'aabb';
