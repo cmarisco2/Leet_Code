@@ -22,7 +22,7 @@ import java.util.HashSet;
             //* ELSE -> count RN present in Set.
     //* Time Complexity = O(N), O(N) Extra Space
 
-class Longest_Consecutive_Sequence {
+class Longest_Consecutive_Sequence_128 {
     public static int longestConsecutive(int[] nums) {
         
         HashSet<Integer> set = arrayToSet(nums);
