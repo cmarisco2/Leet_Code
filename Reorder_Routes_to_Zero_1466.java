@@ -11,13 +11,13 @@
 
 //* Build Graph out of 2D array inputs for linear traversal
 
-class Reorder_Routes_to_0 {
+class Reorder_Routes_to_Zero_1466 {
     public Node [] adj;
     public boolean [] visited;
     int count;
     int SOURCE;
 
-    public Reorder_Routes_to_0(int size, int source){
+    public Reorder_Routes_to_Zero_1466(int size, int source){
         SOURCE = source;
         adj = new Node [size];
         visited = new boolean [size];
@@ -71,7 +71,7 @@ class Reorder_Routes_to_0 {
 
     public static void demoCount(int theSize, int [][] connections, int source){
         int size = theSize;
-        Reorder_Routes_to_0 nodes = new Reorder_Routes_to_0(size, source);
+        Reorder_Routes_to_Zero_1466 nodes = new Reorder_Routes_to_Zero_1466(size, source);
         for(int[] arr: connections)
             nodes.addEdge(arr);
         
