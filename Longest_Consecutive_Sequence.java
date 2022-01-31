@@ -10,7 +10,6 @@
 //? Input: nums = [100, 4, 200, 1, 3, 2];
 //? Output = 4
 
-package Arrays;
 import java.util.HashSet;
 
 //* Solution Concept:

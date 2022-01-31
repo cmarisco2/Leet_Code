@@ -26,7 +26,6 @@
 // * Return -1.
 
 
-package Strings;
 import java.util.HashMap;
 
 class FirstUniqChar_387 {

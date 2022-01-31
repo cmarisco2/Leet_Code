@@ -1,5 +1,5 @@
 //* LeetCode Problem 1299: Replace Elements With Greatest Element on Right Side
-package Arrays;
+
 
 // Problem Statement:
 // Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1
@@ -15,7 +15,7 @@ package Arrays;
 // * 1) Reverse Iterate
 // * 2) oldMax = -1 (before loop)
 // * 3) newMax = max(oldMax, arr[i])
-class Replace_Right_Elements {
+class Replace_Right_Elements_1299 {
     public static int[] replaceElements(int[] arr) {
         int oldMax = -1;
         int newMax;

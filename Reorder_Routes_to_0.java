@@ -9,8 +9,6 @@
 
 // It's guaranteed that each city can reach city 0 after reorder.
 
-package Arrays;
-
 //* Build Graph out of 2D array inputs for linear traversal
 
 class Reorder_Routes_to_0 {
