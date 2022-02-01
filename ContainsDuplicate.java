@@ -22,7 +22,7 @@
 
 import java.util.HashSet;
 class ContainsDuplicate{
-    public boolean containsDuplicate(int[] nums) {
+    public static boolean containsDuplicate(int[] nums) {
         HashSet<Integer> set = new HashSet<>();
         for (int i : nums) {
             if (set.contains(i))
@@ -30,5 +30,26 @@ class ContainsDuplicate{
             set.add(i);
         }
         return false;
+    }
+
+    public static void main(String[] args){
+        int[] nums = { 1, 2, 3, 1 };
+        int[] vals = { 1, 2, 3, 4 };
+        //
+        System.out.println("The nums array values are: ");
+        System.out.print("[ ");
+        for(int i : nums){
+            System.out.print(i + " ");
+        }
+        System.out.println("]");
+        System.out.println("Are there duplicates in nums?: " + containsDuplicate(nums));
+        //
+        System.out.println("The vals array values are: ");
+        System.out.print("[ ");
+        for(int i : vals){
+            System.out.print(i + " ");
+        }
+        System.out.println("]");
+        System.out.println("Are there duplicates in vals?: " + containsDuplicate(vals));
     }
 }
