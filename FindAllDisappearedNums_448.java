@@ -25,7 +25,7 @@
 //! Tricks - *Range and Indices method is a convenient idea to keep in handy for array problems
 
 //! 1) Range <---> Array Indices Mapping (Allows for checking and storing data with second trick)
-//! 2) Mutate Given Argument Array! (Use to flag visited mapped indices. Return to original state prior to completing the solution)
+//* 2) Mutate Given Argument Array! (Use to flag visited mapped indices. Return to original state prior to completing the solution)
 
 
 //? Solution Notes:
@@ -66,7 +66,7 @@ class FindAllDisappearedNums_448{
     }
 
     public static void main(String[]args){
-        int[] nums = { 4, 3, 2, 2 };
+        int[] nums = { 4, 3, 2, 7, 8, 2, 3, 1 };
 
         List<Integer> vals = findDisappearedNumbers(nums);
         System.out.println();
