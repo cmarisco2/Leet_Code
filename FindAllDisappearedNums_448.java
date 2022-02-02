@@ -24,20 +24,23 @@ import java.util.List;
 class FindAllDisappearedNums_448{
     public static List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> vals = new ArrayList<Integer>();
-
-        HashSet<Integer> set = new HashSet<>();
-        for (int i : nums)
-            set.add(i);
-        for (int i = 1; i <= nums.length; i++) {
-            if (!set.contains(i))
-                vals.add(i);
+        for(int i = 0; i < nums.length; i++){
+            int val = Math.abs(nums[i]);
+            nums[val - 1] = Math.abs(nums[val - 1]) * -1;
         }
 
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] > 0){
+                vals.add(i + 1);
+            } else {
+                nums[i] *= nums[i];
+            }
+        }
         return vals;
     }
 
     public static void main(String[]args){
-        int[] nums = { 4, 3, 2, 7, 8, 2, 3, 1 };
+        int[] nums = { 4, 3, 2, 2 };
 
         List<Integer> vals = findDisappearedNumbers(nums);
         System.out.println();
