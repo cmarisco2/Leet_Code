@@ -17,7 +17,6 @@
 // Output: [2]
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -33,7 +32,7 @@ class FindAllDisappearedNums_448{
             if(nums[i] > 0){
                 vals.add(i + 1);
             } else {
-                nums[i] *= nums[i];
+                nums[i] *= -1;
             }
         }
         return vals;
@@ -47,6 +46,11 @@ class FindAllDisappearedNums_448{
         System.out.print("[ ");
         for(int val: vals){
             System.out.print(val + " ");
+        }
+        System.out.println("]");
+        System.out.print("[ ");
+        for(int num: nums){
+            System.out.print(num + " ");
         }
         System.out.println("]");
     }
