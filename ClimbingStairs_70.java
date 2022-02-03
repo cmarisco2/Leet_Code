@@ -19,3 +19,19 @@
 // 1. 1 step + 1 step + 1 step
 // 2. 1 step + 2 steps
 // 3. 2 steps + 1 step
+
+class ClimbingStairs_70{
+    public static int climbStairs(int n) {
+        int[] cache = new int[n + 1];
+        cache[n] = 1;
+        cache[n - 1] = 1;
+        for (int i = n - 2; i >= 0; i--) {
+            cache[i] = cache[i + 1] + cache[i + 2];
+        }
+        return cache[0];
+    }
+    public static void main(String[] args){
+        int stairs = 5;
+        System.out.println("The Number of Ways to clime " + stairs + " stairs is: " + climbStairs(stairs));
+    }
+}
