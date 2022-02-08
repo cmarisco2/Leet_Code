@@ -1,4 +1,5 @@
 //? Leetcode Problem 3: Longest Substring Without Repeating Characters
+//? Difficulty Rating: Medium
 // Given a string s, find the length of the longest substring without repeating characters.
 
 //? Examples:
@@ -18,7 +19,11 @@
 //?Solution Notes: SLIDING WINDOW APPROACH:
 //* 1) Use HashSet 
 //* 2) Check & Add Elements to SET from the RIGHT.
-//* 3) IF Repeat -> Remove From LEFT Until No Repeats Exist in SET
+//* 3) While Repeats Exist -> Remove From LEFT Until No Repeats are within the SET
+    //* --Keep Track of the max length during this traversal
+
+//? TC -> O(N)
+//? SC -> O(N)
 package Sliding_Window;
 import java.util.HashSet;
 
