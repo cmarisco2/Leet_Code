@@ -48,5 +48,13 @@ class MinimumSizeSubarraySum_209{
 
     public static void main(String[] args){
         int[] nums = {2, 3, 1, 2, 4, 3};
+        int target = 7;
+        System.out.println("The input array is:");
+        System.out.print("[ ");
+        for(int num : nums){
+            System.out.print(num + " ");
+        }
+        System.out.println("]");
+        System.out.println("The Minimum Size Subarray Sum for target " + target + " is of length: " + minSubArrayLen(target, nums));
     }
 }
