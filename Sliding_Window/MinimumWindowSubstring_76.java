@@ -1,3 +1,7 @@
+//! ISSUE: THIS SOLUTION CANNOT HANDLE DUPLICATES
+
+package Sliding_Window;
+
 
 import java.util.HashMap;
 import java.util.HashSet;
