@@ -26,21 +26,13 @@ class MinimumWindowSubstring_76{
             haveMap.put(key, 0);
         }
 
-        needMap.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-        haveMap.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-
         for (; j < s.length(); j++) {
             char jChar = s.charAt(j);
             if (haveMap.containsKey(jChar)) {
                 haveMap.put(jChar, haveMap.get(jChar) + 1);
-                if (haveMap.get(jChar) == needMap.get(jChar))
+                if (haveMap.get(jChar) <= needMap.get(jChar))
                     have++;
             }
-
             while (have >= need) {
                 char iChar = s.charAt(i);
                 if (haveMap.containsKey(iChar)){
@@ -57,14 +49,6 @@ class MinimumWindowSubstring_76{
 
             
         }
-
-        needMap.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-        haveMap.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
-
         if (minLength != Integer.MAX_VALUE)
             return s.substring(startIndex, startIndex + minLength);
         return "";
@@ -72,7 +56,7 @@ class MinimumWindowSubstring_76{
 
     public static void main(String[]args){
         System.out.println(minWindow("ADOBECODEBANC", "ABC"));
-        System.out.println(minWindow("ADOBECODEBANC", "ABC"));
+        System.out.println(minWindow("aa", "a"));
         System.out.println(minWindow("abda", "aa"));
     }
 }
