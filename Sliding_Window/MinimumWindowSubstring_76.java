@@ -4,49 +4,67 @@ package Sliding_Window;
 
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
 
 class MinimumWindowSubstring_76{
     public static String minWindow(String s, String t) {
-        HashSet<Character> set = new HashSet<>();
-        HashMap<Character, Integer> map = new HashMap<>();
-        LinkedList<Integer> list = new LinkedList<>();
-        int i = 0, j = 0, minLength = Integer.MAX_VALUE, startIndex = Integer.MAX_VALUE;
+        HashMap<Character, Integer> needMap = new HashMap<>();
+        HashMap<Character, Integer> haveMap = new HashMap<>();
+        int have = 0, need = t.length(), i = 0, j = 0, minLength = Integer.MAX_VALUE, startIndex = -1;
 
+        // if strings are empty or s is shorter than t -> return empty string
+        if (s.length() <= 0 || t.length() <= 0 || s.length() < t.length())
+            return "";
 
+        // Construct Need and Have Maps in Single Loop
         for (int k = 0; k < t.length(); k++) {
-            set.add(t.charAt(k));
+            char key = t.charAt(k);
+            if (needMap.containsKey(key))
+                needMap.put(key, needMap.get(key) + 1);
+            else {
+                needMap.put(key, 1);
+            }
+            haveMap.put(key, 0);
         }
-        while (j < s.length()) {
-            if (t.length() > s.length())
-                return "";
+
+        needMap.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
+        haveMap.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
+
+        for (; j < s.length(); j++) {
             char jChar = s.charAt(j);
-            while (!set.contains(jChar) && map.size() == 0) {
-                j++;
-                i++;
-                if (j >= s.length())
-                    return "";
-                jChar = s.charAt(j);
+            if (haveMap.containsKey(jChar)) {
+                haveMap.put(jChar, haveMap.get(jChar) + 1);
+                if (haveMap.get(jChar) == needMap.get(jChar))
+                    have++;
             }
 
-            if (set.contains(jChar)) {
-                list.add(j);
-                map.put(jChar, j);
-                char testKey = s.charAt(i);
-                while (i != map.get(testKey)) {
-                    i = list.remove();
-                    testKey = s.charAt(i);
+            while (have >= need) {
+                char iChar = s.charAt(i);
+                if (haveMap.containsKey(iChar)){
+                    haveMap.put(iChar, haveMap.get(iChar) - 1);
+                    if (haveMap.get(iChar) < needMap.get(iChar)) have--;
+                }
+                i++;
+            
+                if ((j - i) < minLength) {
+                    minLength = j - i + 2;
+                    startIndex = i - 1;
                 }
             }
 
-            if (set.size() == map.size() && (j - i + 1) < minLength) {
-                minLength = j - i + 1;
-                startIndex = i;
-            }
-
-            j++;
+            
         }
+
+        needMap.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
+        haveMap.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
+
         if (minLength != Integer.MAX_VALUE)
             return s.substring(startIndex, startIndex + minLength);
         return "";
@@ -54,5 +72,7 @@ class MinimumWindowSubstring_76{
 
     public static void main(String[]args){
         System.out.println(minWindow("ADOBECODEBANC", "ABC"));
+        System.out.println(minWindow("ADOBECODEBANC", "ABC"));
+        System.out.println(minWindow("abda", "aa"));
     }
 }
