@@ -29,9 +29,10 @@
 //! -Counter Is Key!
     //! -Keeps Track of When to stop pushing onto list (Count == length)
     //! -Keeps Track of When To Stop Popping from the front (Count < length)
-
-
+    
+    
 //? Solution Concept - Pseudocode/Formula
+//? TC -> O(N + M), SC -> O(M): Space Complexity for both maps are based on the smaller string t.
 //* 1) 2 Maps -> One for counting chars in String t. Other with same chars initialized all at 0.
 //* 2) j - adds, i - pops
 //* 3) "j": String S - Map has Value++ each found Key as "j" traverses String.
