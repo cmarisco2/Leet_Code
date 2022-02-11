@@ -1,4 +1,4 @@
-//! ISSUE: THIS SOLUTION CANNOT HANDLE DUPLICATES
+
 
 package Sliding_Window;
 
@@ -40,8 +40,8 @@ class MinimumWindowSubstring_76{
                     if (haveMap.get(iChar) < needMap.get(iChar)) have--;
                 }
                 i++;
-            
-                if ((j - i) < minLength) {
+                
+                if ((j - i + 2) < minLength) {
                     minLength = j - i + 2;
                     startIndex = i - 1;
                 }
@@ -58,5 +58,7 @@ class MinimumWindowSubstring_76{
         System.out.println(minWindow("ADOBECODEBANC", "ABC"));
         System.out.println(minWindow("aa", "a"));
         System.out.println(minWindow("abda", "aa"));
+        System.out.println(minWindow("cabwefgewcwaefgcf", "cae"));
+
     }
 }
