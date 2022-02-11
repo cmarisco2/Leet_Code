@@ -1,4 +1,45 @@
+//? Leetcode Problem 76: Minimum Window Substring
+//? Difficulty: HARD
 
+// Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
+
+// The testcases will be generated such that the answer is unique.
+
+// A substring is a contiguous sequence of characters within the string.
+
+//? Examples:
+// Input: s = "ADOBECODEBANC", t = "ABC"
+// Output: "BANC"
+// Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+
+// Input: s = "a", t = "a"
+// Output: "a"
+// Explanation: The entire string s is the minimum window.
+
+// Input: s = "a", t = "aa"
+// Output: ""
+// Explanation: Both 'a's from t must be included in the window.
+// Since the largest window of s only has one 'a', return empty string.
+
+
+//? Solution Notes: Idea
+//* -Obvious Sliding Window Problem 
+//* -Difficult To Solve
+//! -Use 2 Maps(1st - Reference, 2nd - checks 1st, updates counter), Pushing RightSide w/ Counter (2 Counters, 1 - Ref, 2 - Counts to Ref)
+//! -Counter Is Key!
+    //! -Keeps Track of When to stop pushing onto list (Count == length)
+    //! -Keeps Track of When To Stop Popping from the front (Count < length)
+
+
+//? Solution Concept - Pseudocode/Formula
+//* 1) 2 Maps -> One for counting chars in String t. Other with same chars initialized all at 0.
+//* 2) j - adds, i - pops
+//* 3) "j": String S - Map has Value++ each found Key as "j" traverses String.
+    //* Ints "Have" & "Need" rep # of chars found vs required. Have == 0 initially. Need = t.length();
+    //* Have++; if we find a char with its Value <= T - Map Value.
+//* 4) "i": Moves forward ONLY while (Have >= Need)
+    //* String S - Map Value-- each found Key as "i" traverses String.
+    //* Have--; if we find a char with its Value < T - Map Value. 
 
 package Sliding_Window;
 
