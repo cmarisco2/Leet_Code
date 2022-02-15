@@ -1,0 +1,3 @@
+class SquaresOfASortedArray_977{
+    
+}
