@@ -27,15 +27,17 @@
 //? TC -> O(N), SC -> O(N) for the auxiliary array used.
 class SquaresOfASortedArray_977{
     public static int[] sortedSquares(int[] nums) {
+        // Create Auxiliary Array, Left/Right Pointers, and Auxiliary Array Pointer, J
         int j = nums.length - 1;
         int R = j;
         int L = 0;
         int[] aux = new int[j + 1];
 
+        // Square All Values of the Input Array
         for (int i = 0; i < nums.length; i++) {
             nums[i] *= nums[i];
         }
-
+        // Copy the higher value of at L/R ptrs of the input array to the end of the aux array and move towards the beginning of the the aux array.
         while (L <= R) {
             if (nums[R] > nums[L]) {
                 aux[j] = nums[R];
@@ -46,6 +48,8 @@ class SquaresOfASortedArray_977{
             }
             j--;
         }
+
+        // return array
         return aux;
     }
 
