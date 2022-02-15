@@ -1,3 +1,30 @@
+//? Problem 977: Squares of a Sorted Array.
+//? Difficulty: Easy
+
+// Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+//? Examples:
+// Input: nums = [-4,-1,0,3,10]
+// Output: [0,1,9,16,100]
+// Explanation: After squaring, the array becomes [16,1,0,9,100].
+// After sorting, it becomes [0,1,9,16,100].
+
+// Input: nums = [-7,-3,2,3,11]
+// Output: [4,9,9,49,121]
+
+//? Brute Force - Sorting
+//? TC -> O(NlgN), SC -> O(1) Assuming an inplace QuickSort is used.
+// Square All Elements in the Array.
+// Sort All Elements in the Array.
+
+//? Solution Notes: 2Ptr Approach
+//* 1) Square All Elements in the Array.
+//* 2) Copy from Front & Back of Given Array to the Back of an Aux Array based on the higher value
+    //* Value @ J is Greater Square of L/R (16 vs 100)
+    //* [-4, -1, 0, 3, 10]   [ , , , , ]
+    //*   L            R              J
+
+//? TC -> O(N), SC -> O(N) for the auxiliary array used.
 class SquaresOfASortedArray_977{
     public static int[] sortedSquares(int[] nums) {
         int j = nums.length - 1;
