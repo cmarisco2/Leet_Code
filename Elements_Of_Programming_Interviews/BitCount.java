@@ -3,7 +3,7 @@ class BitCount {
     public static short countBits(int x){
         short numBits = 0;
         while(x != 0){
-            numBits += (x & 1);
+            numBits += (x & 1); //Note x & 1 -> last bit of any word
             x >>>= 1;
         }
 
