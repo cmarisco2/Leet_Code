@@ -3,34 +3,43 @@ import java.util.LinkedList;
 import java.util.List;
 
 class ThreeSum_15{
-    public List<List<Integer>> threeSum(int[] nums) {
+    public static List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         int a = 0;
+        int left, right, target, sum;
         LinkedList<List<Integer>> result = new LinkedList<>();
 
         for (; a < nums.length; a++) {
 
-            int left = a + 1;
-            int right = nums.length - 1;
-            int target = 0 - nums[a];
-            int sum;
+            left = a + 1;
+            right = nums.length - 1;
 
-            while (left <= right) {
+
+
+            while (left < right) {
                 LinkedList<Integer> sums = new LinkedList<>();
-                while (left >= 1 && nums[left - 1] == nums[left])
+                while (left >= 1 && nums[left - 1] == nums[left]){ 
                     left++;
-                while (right <= nums.length - 2 && nums[right] == nums[right + 1])
+                    if(left > nums.length) break;
+                }
+                while (right <= nums.length - 2 && nums[right] == nums[right + 1]){
                     right--;
+                    if(right < 0) break;
+                }
+                
                 sum = nums[left] + nums[right];
-                if (sum == target) {
+                if (sum + a == 0) {
                     sums.add(a);
                     sums.add(left);
                     sums.add(right);
                     result.add(sums);
-                } else if (sum < target)
+                } else if (sum + a < 0){
                     left++;
-                else
+                }
+                else {
+
                     right--;
+                }
 
             }
         }
@@ -38,6 +47,13 @@ class ThreeSum_15{
     }
 
     public static void main(String[] args){
-        
+        int[] numbers = { -1, 0, 1, 2, -1, -4 };
+        LinkedList<List<Integer>> ints = (LinkedList<List<Integer>>) threeSum(numbers);
+        for(List<Integer> list: ints){
+            for(int w : list){
+                System.out.print(w + " ");
+            }
+            System.out.println();
+        }
     }
 }
