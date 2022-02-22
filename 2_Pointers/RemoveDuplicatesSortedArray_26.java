@@ -35,14 +35,30 @@
 //? TC -> O(N), SC -> O(1)
 
 class RemoveDuplicatesSortedArray_26{
-
-
-    
+    public static int removeDuplicates(int[] nums) {
+        int left = 1, right = 1;
+        while (right < nums.length) {
+            if (nums[right - 1] != nums[right]) {
+                nums[left] = nums[right];
+                left++;
+            }
+            right++;
+        }
+        return left;
+    }
     public static void main(String[] args){
         int[] nums = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
         System.out.print("[ ");
         for(int num : nums){
             System.out.print(num + " ");
+        }
+        System.out.println("]");
+        
+        int k = removeDuplicates(nums);
+        
+        System.out.print("[ ");
+        for(int i = 0; i < k; i++){
+            System.out.print(nums[i] + " ");
         }
         System.out.println("]");
     }
