@@ -52,14 +52,14 @@ class RemoveDuplicatesSortedArray_26{
         for(int num : nums){
             System.out.print(num + " ");
         }
-        System.out.println("]");
+        System.out.println("]"); //Output: [ 0 0 1 1 1 2 2 3 3 4 ]
         
         int k = removeDuplicates(nums);
-        
+
         System.out.print("[ ");
         for(int i = 0; i < k; i++){
             System.out.print(nums[i] + " ");
         }
-        System.out.println("]");
+        System.out.println("]"); //Output: [ 0 1 2 3 4 ]
     }
 }
