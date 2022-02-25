@@ -48,13 +48,15 @@ class BinaryTreeLevelOrderTraversal_102{
 
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> result = new LinkedList<>();
-        LinkedList<TreeNode> q = new LinkedList<>();
+        List<List<Integer>> result = new LinkedList<>(); //List of sublists
+        LinkedList<TreeNode> q = new LinkedList<>(); //Queue
 
-        q.add(root);
+        q.add(root); //Preload
 
+        //While then For-loop w/Fixed length (BFS pattern)
         while (q.size() > 0) {
-            List<Integer> subList = new LinkedList<>();
+            List<Integer> subList = new LinkedList<>(); //sublist
+
             int length = q.size();
 
             for (int i = 0; i < length; i++) {
