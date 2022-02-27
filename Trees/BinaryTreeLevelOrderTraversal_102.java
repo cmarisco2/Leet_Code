@@ -1,6 +1,25 @@
 import java.util.LinkedList;
 import java.util.List;
 
+//? insertNode method of BST that stops at Node just prior to null links
+// private Node insertNode(Node root, Integer data) {
+//         if (data - root.data <= 0) {
+//             if (root.left == null) {
+//                 root.left = new Node(data);
+//                 return root.left;
+//             } else {
+//                 return insertNode(root.left, data);
+//             }
+//         } else {
+//             if (root.right == null) {
+//                 root.right = new Node(data);
+//                 return root.right;
+//             } else {
+//                 return insertNode(root.right, data);
+//             }
+//         }
+//     }
+
 //? LeetCode Problem 102: Binary Tree Level Order Traversal
 // Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
 
