@@ -24,7 +24,7 @@
 
 //? TC -> O(N)
 //? SC -> O(N)
-package Sliding_Window;
+
 import java.util.HashSet;
 
 class LongestSubstringNoRepeatedChars_3{

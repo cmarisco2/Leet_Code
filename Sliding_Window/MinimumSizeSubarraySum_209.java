@@ -28,7 +28,7 @@
     //* Iterate through the Loop Once.
 //* SC -> O(1)
     //* Use only i,j,sum, and minLength regardless of size of nums[]
-package Sliding_Window;
+
 class MinimumSizeSubarraySum_209{
     public static int minSubArrayLen(int target, int[] nums) {
         int i = 0, j = 0, sum = 0, minLength = Integer.MAX_VALUE;
