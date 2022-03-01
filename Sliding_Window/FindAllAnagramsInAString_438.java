@@ -20,9 +20,9 @@ class FindAllAnagramsInAString_438{
             }
             s_map.put(key, 0);
         }
-        for(int k = 0; k < 3; k++){
-            System.out.println("p_map contains: " + p_map.containsKey(p.charAt(k)) + " with a count of: " + p_map.get(p.charAt(k)));
-        }
+        // for(int k = 0; k < 3; k++){
+        //     System.out.println("p_map contains: " + p_map.containsKey(p.charAt(k)) + " with a count of: " + p_map.get(p.charAt(k)));
+        // }
         while (j < s.length()) {
             char jChar = s.charAt(j);
             if (p_map.containsKey(jChar)) {
@@ -48,12 +48,13 @@ class FindAllAnagramsInAString_438{
     }
 
     public static void main(String[] args){
-        String s = "cbaebabacd";
+        // String s = "cbaebabacd";
+        String s = "abaacbabc";
         String p = "abc";
 
         List<Integer> list = findAnagrams(s, p);
         for(int w: list){
-            System.out.println(w);
+            System.out.print(w + " ");
         }
     }
 }
