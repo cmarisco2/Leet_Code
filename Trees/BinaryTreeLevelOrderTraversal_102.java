@@ -43,29 +43,6 @@ import java.util.List;
 //? TC -> O(N) as we visit each Node once.
 //? SC -> O(N) as the queue will store at most N/2 elements.
 class BinaryTreeLevelOrderTraversal_102{
-    /**
-     * Definition for a binary tree node.
-     */
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
-
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new LinkedList<>(); //List of sublists
         LinkedList<TreeNode> q = new LinkedList<>(); //Queue
