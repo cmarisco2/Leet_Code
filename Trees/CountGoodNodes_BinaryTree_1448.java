@@ -26,12 +26,22 @@
 //? Time Complexity = O(N), Space Complexity = O (Tree - Height in Call Stack)
 
 class CountGoodNodes_BinaryTree_1448{
-    int count = 0;
+    int count = 0; //Global counter that is incremented in helper function.
+    /**
+     * Top level function that returns the value to solve the problem.
+     * @param root is the Tree's given source node
+     * @return 'count' is the number of 'Good Nodes' as defined by the problem statement.
+     */
     public int goodNodes(TreeNode root){
         goodNode(root, root.val);
         return count;
     }
-    
+    /**
+     * Helper function that counts the Good Nodes
+     * 
+     * @param x is the current node being visited
+     * @param ref is the running max at this time. if its smaller or equal to the current node's value, count++ and ref = Node x's value. recurse.
+     */
     public void goodNode(TreeNode x, int ref){
         if (x == null) return;
         if (x.val >= ref){
