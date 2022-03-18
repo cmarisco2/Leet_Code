@@ -26,9 +26,9 @@
 //? Solution is TC -> O(N), SC -> O(N)
 
 //? Optimal Solution: 
-//* create filter helper function 'isAlphaNumeric' to test ASCII values of chars.
+//* Create filter helper function 'isAlphaNumeric' to test ASCII values of chars.
 //* Use 2 Pointers in primary function. left = start of s, right = end of s.
-//* While(left < right), traverse string
+//* While(left < right), traverse string (left++, right--)
     //* skip non-alphanumeric chars
     //* compare lower-case alphanumeric chars
 //? Solution is TC -> O(N), SC -> O(1)
