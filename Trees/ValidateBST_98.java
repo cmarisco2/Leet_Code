@@ -1,0 +1,4 @@
+
+class ValidateBST_98{
+
+}
