@@ -21,19 +21,36 @@ import java.util.LinkedList;
 // To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
 
 class CourseSchedule_207{
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    public static boolean canFinish(int numCourses, int[][] prerequisites, HashMap adj) {
         boolean[] marked = new boolean[numCourses];
-        return true;
+        boolean[] onStack = new boolean[numCourses];
+        int vertex = 0;
+
+        return dfsCycle(numCourses, prerequisites, adj, marked, onStack, vertex);
     }
 
-    public static boolean dfsCycle(int numCourses, int[][] prereqs, HashMap adj, boolean[] marked, boolean[] onStack){
+    public static boolean dfsCycle(int numCourses, int[][] prereqs, HashMap adj, boolean[] marked, boolean[] onStack, int vertex){
+
+        marked[vertex] = true;
+        onStack[vertex] = true;
+
+        for(int w : (LinkedList<Integer>)adj.get(vertex)){
+            if(!marked[w]){
+                 return !onStack[w] && dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
+            }
+        }
+
+        onStack[vertex] = false;
+
         return true;
     }
 
     public static void buildGraph(int numCourses, int[][] prereqs, HashMap adj){
+        for(int i = 0; i < numCourses; i++){
+            adj.put(i, new LinkedList<Integer>());
+        }
         for (int[] arr : prereqs) {
             int key = arr[0];
-            if(!adj.containsKey(key)) adj.put(key, new LinkedList<Integer>());
             ((LinkedList<Integer>) adj.get(key)).add(arr[1]);
         }
     }
@@ -44,7 +61,8 @@ class CourseSchedule_207{
         HashMap<Integer, LinkedList<Integer>> adj = new HashMap<>();
         buildGraph(numCourses, prereqs, adj);
         adj.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
+            System.out.println(entry.getKey() + " : " + entry.getValue());
         });
+        System.out.println("No Cycles? " + canFinish(numCourses, prereqs, adj) );
     }
 }
