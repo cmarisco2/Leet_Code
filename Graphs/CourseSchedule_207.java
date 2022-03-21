@@ -35,19 +35,19 @@ class CourseSchedule_207{
         marked[vertex] = true;
         onStack[vertex] = true;
 
-        // for(int w : (LinkedList<Integer>)adj.get(vertex)){
-        //     if(!marked[w]){
-        //          dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
-        //     } else if (onStack[w]) onStack[numCourses] = false;
-        // }
-        for(int i = vertex; i < numCourses; i++){
-            for (int w : (LinkedList<Integer>) adj.get(i)) {
-                if (!marked[w]) {
-                    dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
-                } else if (onStack[w])
-                    onStack[numCourses] = false;
-            }
+        for(int w : (LinkedList<Integer>)adj.get(vertex)){
+            if(!marked[w]){
+                 dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
+            } else if (onStack[w]) onStack[numCourses] = false;
         }
+        // for(int i = vertex; i < numCourses; i++){
+        //     for (int w : (LinkedList<Integer>) adj.get(i)) {
+        //         if (!marked[w]) {
+        //             dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
+        //         } else if (onStack[w])
+        //             onStack[numCourses] = false;
+        //     }
+        // }
 
         onStack[vertex] = false;
 
