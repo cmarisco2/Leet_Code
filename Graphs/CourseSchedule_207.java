@@ -23,7 +23,8 @@ import java.util.LinkedList;
 class CourseSchedule_207{
     public static boolean canFinish(int numCourses, int[][] prerequisites, HashMap adj) {
         boolean[] marked = new boolean[numCourses];
-        boolean[] onStack = new boolean[numCourses];
+        boolean[] onStack = new boolean[numCourses + 1];
+        onStack[numCourses] = true;
         int vertex = 0;
 
         return dfsCycle(numCourses, prerequisites, adj, marked, onStack, vertex);
@@ -36,13 +37,13 @@ class CourseSchedule_207{
 
         for(int w : (LinkedList<Integer>)adj.get(vertex)){
             if(!marked[w]){
-                 return !onStack[w] && dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
-            }
+                 dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
+            } else if (onStack[w]) onStack[numCourses] = false;
         }
 
         onStack[vertex] = false;
 
-        return true;
+        return onStack[numCourses];
     }
 
     public static void buildGraph(int numCourses, int[][] prereqs, HashMap adj){
