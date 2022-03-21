@@ -35,10 +35,18 @@ class CourseSchedule_207{
         marked[vertex] = true;
         onStack[vertex] = true;
 
-        for(int w : (LinkedList<Integer>)adj.get(vertex)){
-            if(!marked[w]){
-                 dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
-            } else if (onStack[w]) onStack[numCourses] = false;
+        // for(int w : (LinkedList<Integer>)adj.get(vertex)){
+        //     if(!marked[w]){
+        //          dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
+        //     } else if (onStack[w]) onStack[numCourses] = false;
+        // }
+        for(int i = vertex; i < numCourses; i++){
+            for (int w : (LinkedList<Integer>) adj.get(i)) {
+                if (!marked[w]) {
+                    dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
+                } else if (onStack[w])
+                    onStack[numCourses] = false;
+            }
         }
 
         onStack[vertex] = false;
@@ -58,7 +66,10 @@ class CourseSchedule_207{
 
     public static void main(String[] args){
         int numCourses = 5;
-        int [][] prereqs = { { 0, 1 }, { 0, 2 }, { 1, 3 }, { 1, 4 }, { 3, 4 } };
+        int [][] prereqs = {{0,1},{0,2},{1,3},{1,4},{3,4}};
+        // int numCourses = 20;
+        // int [][] prereqs = { { 0, 10 }, { 3, 18 }, { 5, 5 }, { 6, 11 }, { 11, 14 }, { 13, 1 }, { 15, 1 }, { 17, 4 } };
+
         HashMap<Integer, LinkedList<Integer>> adj = new HashMap<>();
         buildGraph(numCourses, prereqs, adj);
         adj.entrySet().forEach(entry -> {
