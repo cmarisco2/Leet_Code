@@ -20,6 +20,14 @@ import java.util.LinkedList;
 // Explanation: There are a total of 2 courses to take. 
 // To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
 
+//? Solution Notes: 
+//* 1) Build Graph (HashMap Key, Value = LinkedList<Key>)
+//* 2) DFS on Graph:
+    //* - marked[] keeps track of visited nodes
+    //* - onStack[], like marked[], BUT...unwinds after recurse --> Key to Find Cycles
+//* 3) Use unused slot in onStack[] = false, if A cycle is found, true otherwise
+
+//? Time Complexity O(V + E), in a sparse graph, E may be higher.
 class CourseSchedule_207{
     public static boolean canFinish(int numCourses, int[][] prerequisites, HashMap adj) {
         boolean[] marked = new boolean[numCourses];
@@ -45,15 +53,7 @@ class CourseSchedule_207{
                  dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
             } else if (onStack[w]) onStack[numCourses] = false;
         }
-        // for(int i = vertex; i < numCourses; i++){
-        //     for (int w : (LinkedList<Integer>) adj.get(i)) {
-        //         if (!marked[w]) {
-        //             dfsCycle(numCourses, prereqs, adj, marked, onStack, w);
-        //         } else if (onStack[w])
-        //             onStack[numCourses] = false;
-        //     }
-        // }
-
+        
         onStack[vertex] = false;
 
         return onStack[numCourses];
