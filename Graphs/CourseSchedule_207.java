@@ -27,7 +27,12 @@ class CourseSchedule_207{
         onStack[numCourses] = true;
         int vertex = 0;
 
-        return dfsCycle(numCourses, prerequisites, adj, marked, onStack, vertex);
+        for(; vertex < numCourses; vertex++){
+            if(!marked[vertex]) 
+                dfsCycle(numCourses, prerequisites, adj, marked, onStack, vertex);
+        }
+         
+        return onStack[numCourses];
     }
 
     public static boolean dfsCycle(int numCourses, int[][] prereqs, HashMap adj, boolean[] marked, boolean[] onStack, int vertex){
@@ -65,10 +70,10 @@ class CourseSchedule_207{
     }
 
     public static void main(String[] args){
-        int numCourses = 5;
-        int [][] prereqs = {{0,1},{0,2},{1,3},{1,4},{3,4}};
-        // int numCourses = 20;
-        // int [][] prereqs = { { 0, 10 }, { 3, 18 }, { 5, 5 }, { 6, 11 }, { 11, 14 }, { 13, 1 }, { 15, 1 }, { 17, 4 } };
+        // int numCourses = 5;
+        // int [][] prereqs = {{0,1},{0,2},{1,3},{1,4},{3,4}};
+        int numCourses = 20;
+        int [][] prereqs = { { 0, 10 }, { 3, 18 }, { 5, 5 }, { 6, 11 }, { 11, 14 }, { 13, 1 }, { 15, 1 }, { 17, 4 } };
 
         HashMap<Integer, LinkedList<Integer>> adj = new HashMap<>();
         buildGraph(numCourses, prereqs, adj);
