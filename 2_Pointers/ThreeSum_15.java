@@ -6,7 +6,7 @@ class ThreeSum_15{
     public static List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         int a = 0;
-        int left, right, target, sum;
+        int left, right,  sum;
         LinkedList<List<Integer>> result = new LinkedList<>();
 
         for (; a < nums.length; a++) {
