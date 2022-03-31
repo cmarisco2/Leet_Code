@@ -29,7 +29,7 @@ import java.util.List;
 
 //? Solution Notes:
 //* Basic BFS to solve the problem. Key Takeaways:
-    //* 1) Use LinkedLists as concreted data type queues.
+    //* 1) Use LinkedList as concrete data type queue.
     //* 2) Because Q len changes dynamically, store its length at each level.
 
 //? Solution Approach:
