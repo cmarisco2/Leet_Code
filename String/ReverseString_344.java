@@ -15,6 +15,7 @@
 
 //* NOTE: These are Char[] not STRINGS. 
 //* -Due to immutability of strings in many programming languages, an efficient solution wouldn't be feasible if rebuilding a string occurred on each swap.
+//* Can convert the String to an array, and apply the same solution
 
 
 //? Solution Approach: 2Ptr
