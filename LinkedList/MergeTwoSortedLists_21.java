@@ -24,18 +24,6 @@
 
 //? TC -> O(N), SC -> O(1) as no new list is created. Just 2 pointers.
 class MergeTwoSortedLists_21{
-
-      public class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { 
-             this.val = val; this.next = next;
-        }
-      }
-     
-
         public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
             // edge cases:
