@@ -20,20 +20,22 @@
 class DuplicateZeros{
 
         public void duplicateZeros(int[] arr) {
-            //Separate List
+            // Separate List
             int[] dup = new int[arr.length];
 
-            //Copy Elements into new list, except copy 0 twice
+            // Copy Elements into new list, except copy 0 twice
             for (int i = 0, j = 0; j < arr.length && i < arr.length; i++, j++) {
                 if (arr[i] == 0) {
                     dup[j++] = arr[i];
                 }
+                
+                // Solve edge case when j is out of array range
                 if (j >= arr.length)
                     break;
                 dup[j] = arr[i];
             }
 
-            //copy new list into old list
+            // Copy new list into old list
             int k = 0;
             for (int num : dup) {
                 arr[k++] = num;
