@@ -1,36 +1,21 @@
-class Solution {
-    TreeNode foundSubRoot;
-
+class SubTreeOfTree{
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        // Use Global to set
-        get(root, subRoot.val);
-        return containsSubTree(foundSubRoot, subRoot, true);
-    }
+        if (root == null && subRoot == null)
+            return true;
+        if (root == null || subRoot == null)
+            return false;
+        if (sameTree(root, subRoot))
+            return true;
+        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
 
-    // get method that returns the root of the subroot within bigger tree.
-    public void get(TreeNode x, int val) {
-        if (x == null)
-            return;
-        if (x.val == val)
-            foundSubRoot = x;
-        get(x.left, val);
-        get(x.right, val);
     }
-
-    // Checks if the bigTree contains the small tree, starting at same element.
-    public boolean containsSubTree(TreeNode bigTree, TreeNode smallTree, boolean flag) {
-        if (flag == false)
+    public boolean sameTree(TreeNode root, TreeNode subRoot) {
+        if (root == null && subRoot == null)
+            return true;
+        if (root == null || subRoot == null)
             return false;
-        if (smallTree == null && bigTree == null)
-            return flag;
-        if (smallTree == null && bigTree != null)
+        if (root.val != subRoot.val)
             return false;
-        if (bigTree == null && smallTree != null)
-            return false;
-        if (smallTree.val != bigTree.val)
-            return false;
-        flag = flag && containsSubTree(bigTree.left, smallTree.left, flag)
-                && containsSubTree(bigTree.right, smallTree.right, flag);
-        return flag;
+        return sameTree(root.left, subRoot.left) && sameTree(root.right, subRoot.right);
     }
 }
