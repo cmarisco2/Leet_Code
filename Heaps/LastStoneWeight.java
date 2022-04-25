@@ -1,3 +1,5 @@
+package Heaps;
+
 //? Leetcode Problem 1046: Last Stone Weight
 //? Difficulty: 'Easy'
 //? Description: 
