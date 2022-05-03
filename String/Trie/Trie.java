@@ -1,3 +1,5 @@
+package Trie;
+
 class Trie{
     private Node root;
     private static final int R = 26;
