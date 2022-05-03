@@ -76,6 +76,23 @@ class Trie{
     }
 
     public boolean startsWith(String prefix) {
-        return true;
+        char ch = prefix.charAt(0);
+        int index = toIndex(ch);
+        Node x = root.next[index];
+
+        return startsWith(x, prefix, 0);
+    }
+
+    private boolean startsWith(Node x, String prefix, int d) {
+        if (x == null)
+            return false;
+        char ch = prefix.charAt(d);
+        if (ch != x.letter)
+            return false;
+        if (d == prefix.length() - 1 && ch == x.letter)
+            return true;
+        ch = prefix.charAt(d + 1);
+        int index = toIndex(ch);
+        return startsWith(x.next[index], prefix, d + 1);
     }
 }
