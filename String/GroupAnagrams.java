@@ -1,28 +1,37 @@
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 
 class GroupAnagrams{
     public List<List<String>> groupAnagrams(String[] strs) {
-        Map<Set<Character>, List<String>> setMap = new HashMap<>();
+        // use List<Integer> in place of array as key
+        Map<List<Integer>, List<String>> setMap = new HashMap<>();
+
+        // returned list
         List<List<String>> result = new LinkedList<>();
+        // map for lower-case letters
+        int R = 26;
 
         for (String str : strs) {
+            int[] charCount = new int[R];
             char[] charArray = str.toCharArray();
-            Set<Character> set = new HashSet<>();
             for (char ch : charArray) {
-                set.add(ch);
+                charCount[ch - 'a']++;
+            }
+            // convert int[] into List<Integer>
+            List<Integer> count = new LinkedList<>();
+            for (int i : charCount) {
+                count.add(i);
             }
 
-            if (!setMap.containsKey(set)) {
-                setMap.put(set, new LinkedList<>());
+            if (!setMap.containsKey(count)) {
+                setMap.put(count, new LinkedList<>());
             }
-            List<String> list = setMap.get(set);
+            List<String> list = setMap.get(count);
             list.add(str);
-            setMap.put(set, list);
+            setMap.put(count, list);
         }
 
         // iterate over hashmap and add each list to the result list.
