@@ -1,3 +1,40 @@
+//? Problem 143: Reorder List
+//? Difficulty: 'Medium'
+//? Description:
+
+// You are given the head of a singly linked-list. The list can be represented as:
+
+// L0 → L1 → … → Ln - 1 → Ln
+
+// Reorder the list to be on the following form:
+
+// L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+
+// You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+//? Examples:
+// Input: head = [1,2,3,4]
+// Output: [1,4,2,3]
+
+// Input: head = [1,2,3,4,5]
+// Output: [1,5,2,4,3]
+
+//? Solution Notes:
+//* Find Middle of List
+//* Reverse the List
+//* Add Elements to a 'new' List
+
+// 1 -> 2 -> 3 -> 4 -> 5 -> null
+// Becomes:
+// 1 -> 2 -> 3 <- 4 <- 5
+//           |
+//           v
+//          null
+// L                   R
+
+//* Create New List with the above diagram as the starting point.
+//* UTILIZE REVERSE LINKED LIST METHOD FROM PREVIOUS PROBLEM
+
 public class ReorderLinkedList{
     public void reorderList(ListNode head) {
         int count = 1;
