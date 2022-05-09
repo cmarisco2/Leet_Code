@@ -1,3 +1,27 @@
+//? Problem 347: Top K Frequent Elements
+//? Difficulty: 'Medium'
+//? Description: 
+
+// Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+//? Examples:
+
+//? Ex1
+// Input: nums = [1,1,1,2,2,3], k = 2
+// Output: [1,2]
+
+//? Ex2
+// Input: nums = [1], k = 1
+// Output: [1]
+
+//? Solution Notes: Bucket Sort
+//* 1) Count Freq with HashMap 
+//* 2) Bucket Sort via Freq as Indices
+    //* Creat List[] size(nums[]) + 1
+    //* for each key in map, add that key to the count[freq]
+//* 3) Starting at end of count[], if that index has a list of elem, add them to the result list.
+    //* Only do so K times.
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
