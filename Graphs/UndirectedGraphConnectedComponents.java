@@ -1,3 +1,14 @@
+//? Solution Approach:
+//* Build Graph (adjacency list representation)
+// 0: [1]
+// 1: [0, 2]
+// 2: [1]
+// 3: [4]
+// 4: [3]
+
+//* Depth First Search: dfs(int vertex)
+//* Increment count for # of times needing to dfs to visit all nodes
+
 import java.util.LinkedList;
 import java.util.List;
 
