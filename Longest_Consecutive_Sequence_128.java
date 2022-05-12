@@ -1,5 +1,6 @@
 //* Problem 128: Longest Consecutive Sequence
 //! Meta-Note: This Problem is a variation of unordered array problems solved in linear time by using a set/hashmap to check for membership (consecutive/complement/etc)
+//? Difficulty: 'Medium'
 
 //? Problem Statement:
 // Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
