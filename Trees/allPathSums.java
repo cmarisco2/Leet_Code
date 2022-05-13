@@ -1,6 +1,25 @@
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+
+//TreeNode Class used:
+// public class TreeNode {
+//     int val;
+//     TreeNode left;
+//     TreeNode right;
+
+//     TreeNode() {
+//     }
+
+//     TreeNode(int val) {
+//         this.val = val;
+//     }
+
+//     TreeNode(int val, TreeNode left, TreeNode right) {
+//         this.val = val;
+//         this.left = left;
+//         this.right = right;
+//     }
+// }
 
 public class allPathSums{
     /**Global list of lists to hold all found lists */
