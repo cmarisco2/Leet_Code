@@ -27,27 +27,36 @@
 
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 class TwoSumIII {
     private Map<Integer, Integer> frequencyMap;
+    private List<Integer> uniqueVals;
     
     public TwoSumIII() {
         this.frequencyMap = new HashMap<>();
+        uniqueVals = new ArrayList<>();
     }
     
     public void add(int number) {
         if(this.frequencyMap.containsKey(number)) this.frequencyMap.replace(number, this.frequencyMap.get(number) + 1);
-        else this.frequencyMap.put(number, 1);
+        else{
+            this.frequencyMap.put(number, 1);
+            uniqueVals.add(number);
+        } 
     }
     
     public boolean find(int value) {
-        for(var entry : this.frequencyMap.entrySet()){
-            int key = entry.getKey();
+        for (int val : uniqueVals) {
+            int key = val;
             int comp = value - key;
-            if(comp == key && entry.getValue() > 1) return true;
-            if(comp != key && this.frequencyMap.containsKey(comp)) return true;
+            if (comp == key && this.frequencyMap.get(key) > 1)
+                return true;
+            if (comp != key && this.frequencyMap.containsKey(comp))
+                return true;
         }
         return false;
     }
