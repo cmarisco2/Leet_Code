@@ -1,5 +1,38 @@
+//? Leetcode Problem 567: Permutation in a String
+//? Difficulty: 'Medium'
+//? Description
+// Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+
+// In other words, return true if one of s1's permutations is the substring of s2.
+
+//? Examples:
+// Input: s1 = "ab", s2 = "eidbaooo"
+// Output: true
+// Explanation: s2 contains one permutation of s1 ("ba").
+
+// Input: s1 = "ab", s2 = "eidboaoo"
+// Output: false
+
+//? Constraints:
+// 1 <= s1.length, s2.length <= 104
+// s1 and s2 consist of lowercase English letters.
+
+//? Solution Notes: Idea 1
+//* Create 2 HashMaps for s1 and s2
+//* Sliding window approach to compare membership and quantity btwn s1Map and s2Map
+
+//? Solution Notes: Idea 2
+//* Use 2 int[] size 26 -> maps alphabetical chars
+//* map s1 completely
+//* map window of s2 completely
+//* count matches
+    //* loop and check for matches with the sliding window technique
+    //* return if mathches == 26
+
+//? Time Complexity == O(N)
+//? Space Complexity == O(N)
 public class PermutationInString{
-    public boolean checkInclusion(String s1, String s2) {
+    public static boolean checkInclusion(String s1, String s2) {
         int matches = 0;
         int windowLength = s1.length();
         int radix = 26; // base of lowercase alphabetical chars
@@ -56,7 +89,16 @@ public class PermutationInString{
         return matches == radix;
     }
 
-    public int charIndex(char ch) {
+    public static int charIndex(char ch) {
         return ch - 'a';
+    }
+
+    public static void main(String[] args){
+        String s1 = "ab";
+        String s2 = "eidbaooo";
+
+        System.out.println("\nStrings are:\n" + s1 + "\n" + s2 + "\n");
+        System.out.println("Is " + s1 + " a permutation of " + s2 + "?");
+        System.out.println(checkInclusion(s1, s2) + "\n");
     }
 }
