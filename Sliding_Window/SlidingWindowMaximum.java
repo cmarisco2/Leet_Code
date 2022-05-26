@@ -1,3 +1,37 @@
+//? Leetcode Problem 239: Sliding Window Maximum
+//? Difficulty: 'Hard'
+//? Description:
+
+// You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+
+// Return the max sliding window.
+
+//? Examples:
+// Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+// Output: [3,3,5,5,6,7]
+// Explanation: 
+// Window position                Max
+// ---------------               -----
+// [1  3  -1] -3  5  3  6  7       3
+//  1 [3  -1  -3] 5  3  6  7       3
+//  1  3 [-1  -3  5] 3  6  7       5
+//  1  3  -1 [-3  5  3] 6  7       5
+//  1  3  -1  -3 [5  3  6] 7       6
+//  1  3  -1  -3  5 [3  6  7]      7
+
+// Input: nums = [1], k = 1
+// Output: [1]
+
+//? Solution Notes: Sliding Window w/ Deque
+//* Use Deque(linkedlist) -> monotonically decreasing queue
+    //* When adding to back of list -> pop elements less than the one being added.
+    //* When iterating through window -> if the value at front of deque == front of the window (leftmost element) 
+        //* add it to output and remove from deque
+        //* else -> cpy front of deque to output
+
+
+//? Time Complexity: O(N)
+
 import java.util.LinkedList;
 
 public class SlidingWindowMaximum{
