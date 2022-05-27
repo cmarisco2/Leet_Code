@@ -21,7 +21,7 @@
 //* Loop i -> n 
     //* while j < k
         //* 2Sum on remaining elements
-        //* skip duplicates
+        //! skip duplicates (both i loop and one ptr in while loop)
     
     //* store i,j,k vals in result list if == target (-nums[i])
 
