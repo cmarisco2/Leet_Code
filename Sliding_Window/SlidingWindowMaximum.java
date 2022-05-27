@@ -25,8 +25,9 @@
 //? Solution Notes: Sliding Window w/ Deque
 //* Use Deque(linkedlist) -> monotonically decreasing queue
     //* When adding to back of list -> pop elements less than the one being added.
-    //* When iterating through window -> if the value at front of deque == front of the window (leftmost element) 
-        //* add it to output and remove from deque
+    //* When iterating through window -> 
+        //* if the value at front of deque == front of the window (leftmost element) 
+            //* add it to output and remove from deque
         //* else -> cpy front of deque to output
 
 
