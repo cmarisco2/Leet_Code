@@ -26,7 +26,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         if(cmp < 0) x.left = put(x.left, key, val);
         else if (cmp > 0) x.right = put(x.right, key, val);
         else x.val = val;
-        x.size = size(x.left) + size(x.right);
+        x.size = size(x.left) + size(x.right) + 1;
         return x;
     }
 
@@ -42,11 +42,36 @@ public class BST<Key extends Comparable<Key>, Value>{
         else return x.val;
     }
 
-    public int size(Node x){
+    public Key min(){
+        return min(this.root).key;
+    }
+    private Node min(Node x){
+        // 2 Base Cases
+        if(x == null) return null;
+        if(x.left == null) return x;
+        //STOP & RETURN when found 
+        return min(x.left); 
+    }
+
+    public Key max(){
+        return max(this.root).key;
+    }
+
+    private Node max(Node x){
+        if(x == null) return null;
+        if(x.right == null) return x;
+        return max(x.right);
+    }
+
+    public int size(){
+        return this.root.size;
+    }
+    private int size(Node x){
         if(x == null) return 0;
         return x.size;
     }
 
+    //* Key Traversals
     public void printPreOrderKeys(){
         printPreOrderKeys(this.root);
     }
@@ -56,6 +81,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         printPreOrderKeys(x.left);
         printPreOrderKeys(x.right);
     }
+    //* Value Traversals
     public void printPreOrderValues(){
         printPreOrderValues(this.root);
     }
@@ -86,6 +112,9 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.println("\nWord at key e is: " + treeMap.get('e'));
         System.out.println("\nWord at key v is: " +  treeMap.get('v'));
         System.out.println("\nWord at key f is: " +  treeMap.get('f'));
+        System.out.println("\nNumber of Tree Elements: " + treeMap.size());
+        System.out.println("\nMinimum Char entered: " + treeMap.min());
+        System.out.println("\nMaximum Char entered: " + treeMap.max());
 
         //Test PreOrder Traversal
         System.out.println();
