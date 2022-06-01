@@ -43,10 +43,54 @@ public class BST<Key extends Comparable<Key>, Value>{
     }
 
     public int size(Node x){
+        if(x == null) return 0;
         return x.size;
     }
 
+    public void printPreOrderKeys(){
+        printPreOrderKeys(this.root);
+    }
+    private void printPreOrderKeys(Node x){
+        if(x == null) return;
+        System.out.print(x.key + " ");
+        printPreOrderKeys(x.left);
+        printPreOrderKeys(x.right);
+    }
+    public void printPreOrderValues(){
+        printPreOrderValues(this.root);
+    }
+    private void printPreOrderValues(Node x){
+        if(x == null) return;
+        System.out.print(x.val + " ");
+        printPreOrderValues(x.left);
+        printPreOrderValues(x.right);
+    }
+
     public static void main(String[] args){
-        
+        //Construct a new BST
+        BST<Character, String> treeMap = new BST<>();
+
+        //Test putting keys in tree map
+        treeMap.put('f', "FaceTime");
+        treeMap.put('m', "Melody");
+        treeMap.put('h', "Hello");
+        treeMap.put('i', "Intelligence");
+        treeMap.put('r', "Rags");
+        treeMap.put('v', "Volume");
+        treeMap.put('o', "Organize");
+        treeMap.put('d', "Dangerous");
+        treeMap.put('c', "Christopher");
+        treeMap.put('e', "Equality");
+
+        //Test retrieval API for the keys
+        System.out.println("\nWord at key e is: " + treeMap.get('e'));
+        System.out.println("\nWord at key v is: " +  treeMap.get('v'));
+        System.out.println("\nWord at key f is: " +  treeMap.get('f'));
+
+        //Test PreOrder Traversal
+        System.out.println();
+        treeMap.printPreOrderKeys(); //fdcemhirov
+        System.out.println();
+        treeMap.printPreOrderValues(); //associated values of preorder keys
     }
 }
