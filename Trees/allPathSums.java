@@ -46,8 +46,7 @@ public class allPathSums{
         dfsSum(x.left, sum, target, subList);
         dfsSum(x.right, sum, target, subList);
 
-        /**This portion removes the value from the stack and list on the way up the recursive calls */
-        sum-=x.val;
+        /**This portion removes the value from the list on the way up the recursive calls */
         subList.removeLast();
 
     }
