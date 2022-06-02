@@ -101,6 +101,17 @@ public class BST<Key extends Comparable<Key>, Value>{
         x.left = deleteMin(x.left);
         return x;
     }
+    //* deleteMax() */
+    public void deleteMax(){
+        root = deleteMax(root);
+    }
+    private Node deleteMax(Node x){
+        if(x == null) return null;
+        Node t = max(this.root);
+        if(t == x.right) x.right = t.left;
+        x.right = deleteMax(x.right);
+        return x;
+    }
 
     //* Key Traversals
     public void printPreOrderKeys(){
@@ -164,5 +175,14 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.println("\nDeleted min key char: " + treeMap.min());
         treeMap.deleteMin();
         System.out.println("\nNew min key char: " + treeMap.min());
+        
+        //Delete max and print
+        System.out.println("\nDeleted max key char: " + treeMap.max());
+        treeMap.deleteMax();
+        System.out.println("\nNew max key char: " + treeMap.max());
+        System.out.println("\nDeleted max key char: " + treeMap.max());
+        treeMap.deleteMax();
+        System.out.println("\nNew max key char: " + treeMap.max());
+        
     }
 }
