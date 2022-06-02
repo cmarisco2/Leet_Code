@@ -70,6 +70,22 @@ public class BST<Key extends Comparable<Key>, Value>{
         if(x == null) return 0;
         return x.size;
     }
+    public Key floor(Key key){
+        Node x = floor(this.root, key);
+        if(x == null) return null;
+        return x.key;
+    }
+    private Node floor(Node x, Key key){
+        if(x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if(cmp < 0) return floor(x.left, key);
+        if(cmp == 0) return x;
+        //* returns x, if the right path doesn't have a larger floor.
+        //* utilizes separate Node ref, local to this method
+        Node t = floor(x.right, key);
+        if(t != null) return t;
+        else return x;
+    }
 
     //* Key Traversals
     public void printPreOrderKeys(){
@@ -121,5 +137,9 @@ public class BST<Key extends Comparable<Key>, Value>{
         treeMap.printPreOrderKeys(); //fdcemhirov
         System.out.println();
         treeMap.printPreOrderValues(); //associated values of preorder keys
+
+        System.out.println("\n\nFloor of key: 'b' is: " + treeMap.floor('b'));
+        System.out.println("\nFloor of key: 'c' is: " + treeMap.floor('c'));
+        System.out.println("\nFloor of key: 'g' is: " + treeMap.floor('g'));
     }
 }
