@@ -89,6 +89,22 @@ public class BST<Key extends Comparable<Key>, Value>{
         else return x;
     }
 
+    public Key ceiling(Key key){
+        Node x = ceiling(this.root, key);
+        if(x == null) return null;
+        return x.key;
+    }
+
+    private Node ceiling(Node x, Key key){
+        if(x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if(cmp > 0) return ceiling(x.right, key);
+        if(cmp == 0) return x;
+        Node t = ceiling(x.left, key);
+        if(t != null) return t;
+        else return x;
+    }
+
     //* deleteMin() */
     public void deleteMin(){
         root = deleteMin(root);
@@ -164,9 +180,15 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.println();
         treeMap.printPreOrderValues(); //associated values of preorder keys
 
+        // Floors
         System.out.println("\n\nFloor of key: 'b' is: " + treeMap.floor('b'));
         System.out.println("\nFloor of key: 'c' is: " + treeMap.floor('c'));
         System.out.println("\nFloor of key: 'g' is: " + treeMap.floor('g'));
+
+        // Ceilings
+        System.out.println("\n\nCeiling of key: 'b' is: " + treeMap.ceiling('b'));
+        System.out.println("\nCeiling of key: 'c' is: " + treeMap.ceiling('c'));
+        System.out.println("\nCeiling of key: 'g' is: " + treeMap.ceiling('g'));
 
         //Delete min and print
         System.out.println("\nDeleted min key char: " + treeMap.min());
