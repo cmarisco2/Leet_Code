@@ -15,7 +15,7 @@ public class BST<Key extends Comparable<Key>, Value>{
             this.size = size;
         }
     }
-
+    //* put Key */
     public void put(Key key, Value val){
         this.root = put(this.root, key, val);
     }
@@ -29,7 +29,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         x.size = size(x.left) + size(x.right) + 1;
         return x;
     }
-
+    //* get Value */
     public Value get(Key key){
         return get(this.root, key);
     }
@@ -41,7 +41,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         else if (cmp > 0) return get(x.right, key);
         else return x.val;
     }
-
+    //* Key Min */
     public Key min(){
         return min(this.root).key;
     }
@@ -52,7 +52,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         //STOP & RETURN when found 
         return min(x.left); 
     }
-
+     //* Key Max */
     public Key max(){
         return max(this.root).key;
     }
@@ -62,7 +62,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         if(x.right == null) return x;
         return max(x.right);
     }
-
+    //* Node size */
     public int size(){
         return this.root.size;
     }
@@ -70,6 +70,8 @@ public class BST<Key extends Comparable<Key>, Value>{
         if(x == null) return 0;
         return x.size;
     }
+
+    //* floor() */
     public Key floor(Key key){
         Node x = floor(this.root, key);
         if(x == null) return null;
@@ -85,6 +87,19 @@ public class BST<Key extends Comparable<Key>, Value>{
         Node t = floor(x.right, key);
         if(t != null) return t;
         else return x;
+    }
+
+    //* deleteMin() */
+    public void deleteMin(){
+        root = deleteMin(root);
+    }
+
+    private Node deleteMin(Node x){
+        if(x == null) return null;
+        Node t = min(this.root);
+        if(t == x.left) x.left = t.right;
+        x.left = deleteMin(x.left);
+        return x;
     }
 
     //* Key Traversals
@@ -141,5 +156,13 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.println("\n\nFloor of key: 'b' is: " + treeMap.floor('b'));
         System.out.println("\nFloor of key: 'c' is: " + treeMap.floor('c'));
         System.out.println("\nFloor of key: 'g' is: " + treeMap.floor('g'));
+
+        //Delete min and print
+        System.out.println("\nDeleted min key char: " + treeMap.min());
+        treeMap.deleteMin();
+        System.out.println("\nNew min key char: " + treeMap.min());
+        System.out.println("\nDeleted min key char: " + treeMap.min());
+        treeMap.deleteMin();
+        System.out.println("\nNew min key char: " + treeMap.min());
     }
 }
