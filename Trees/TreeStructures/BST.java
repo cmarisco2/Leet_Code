@@ -110,10 +110,9 @@ public class BST<Key extends Comparable<Key>, Value>{
         root = deleteMin(root);
     }
 
+    //improved deleteMin to delete the min of a subtree not from root
     private Node deleteMin(Node x){
-        if(x == null) return null;
-        Node t = min(this.root);
-        if(t == x.left) x.left = t.right;
+        if(x.left == null) return x.right;
         x.left = deleteMin(x.left);
         x.size = size(x.left) + size(x.right) + 1;
         return x;
@@ -123,15 +122,41 @@ public class BST<Key extends Comparable<Key>, Value>{
         root = deleteMax(root);
     }
     private Node deleteMax(Node x){
-        if(x == null) return null;
-        Node t = max(this.root);
-        if(t == x.right) x.right = t.left;
+        // if(x == null) return null;
+        // Node t = max(this.root);
+        // if(t == x.right) x.right = t.left;
+        // x.right = deleteMax(x.right);
+        if(x.right == null) return x.left;
         x.right = deleteMax(x.right);
         x.size = size(x.left) + size(x.right) + 1;
         return x;
     }
 
-    //* Key Traversals
+    //* delete any node via Hibbard deletion */
+    public void delete(Key key){
+        root = delete(this.root, key);
+    }
+
+    private Node delete(Node x, Key key){
+        if(x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if(cmp < 0) x.left = delete(x.left, key);
+        else if(cmp > 0) x.right = delete(x.right, key);
+        else {
+            if(x.left == null) return x.right;
+            if(x.right == null) return x.left;
+            Node t = x;
+            x = min(t.right);
+            x.right = deleteMin(t.right);
+            x.left = t.left;
+            return x;
+        }
+        x.size = size(x.left) + size(x.right) + 1;
+        return x;
+    }
+
+    //? Key Traversals
+    //* PreOrder Key Traversal */
     public void printPreOrderKeys(){
         printPreOrderKeys(this.root);
     }
@@ -141,7 +166,28 @@ public class BST<Key extends Comparable<Key>, Value>{
         printPreOrderKeys(x.left);
         printPreOrderKeys(x.right);
     }
-    //* Value Traversals
+    //* InOrder Key Traversal */
+    public void printInOrderKeys(){
+        printInOrderKeys(this.root);
+    }
+    private void printInOrderKeys(Node x){
+        if(x == null) return;
+        printInOrderKeys(x.left);
+        System.out.print(x.key + " ");
+        printInOrderKeys(x.right);
+    }
+    //* PostOrder Key Traversal */
+    public void printPostOrderKeys(){
+        printPostOrderKeys(this.root);
+    }
+    private void printPostOrderKeys(Node x){
+        if(x == null) return;
+        printPostOrderKeys(x.left);
+        printPostOrderKeys(x.right);
+        System.out.print(x.key + " ");
+    }
+    //? Value Traversals
+    //* PreOrder Value Traversal */
     public void printPreOrderValues(){
         printPreOrderValues(this.root);
     }
@@ -150,6 +196,26 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.print(x.val + " ");
         printPreOrderValues(x.left);
         printPreOrderValues(x.right);
+    }
+    //* InOrder Value Traversal */
+    public void printInOrderValues(){
+        printInOrderValues(this.root);
+    }
+    private void printInOrderValues(Node x){
+        if(x == null) return;
+        printInOrderValues(x.left);
+        System.out.print(x.val + " ");
+        printInOrderValues(x.right);
+    }
+    //* PostOrder Value Traversal */
+    public void printPostOrderValues(){
+        printPostOrderValues(this.root);
+    }
+    private void printPostOrderValues(Node x){
+        if(x == null) return;
+        printPostOrderValues(x.left);
+        printPostOrderValues(x.right);
+        System.out.print(x.val + " ");
     }
 
     public static void main(String[] args){
@@ -181,6 +247,16 @@ public class BST<Key extends Comparable<Key>, Value>{
         treeMap.printPreOrderKeys(); //fdcemhirov
         System.out.println();
         treeMap.printPreOrderValues(); //associated values of preorder keys
+        //Test InOrder Traversal
+        System.out.println();
+        treeMap.printInOrderKeys(); //cdefhimorv
+        System.out.println();
+        treeMap.printInOrderValues(); //associated values of inorder keys
+        //Test PostOrder Traversal
+        System.out.println();
+        treeMap.printPostOrderKeys(); // cedihovrmf
+        System.out.println();
+        treeMap.printPostOrderValues(); //associated values of postorder keys
         
         // Floors
         System.out.println("\n\nFloor of key: 'b' is: " + treeMap.floor('b'));
@@ -192,22 +268,27 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.println("\nCeiling of key: 'c' is: " + treeMap.ceiling('c'));
         System.out.println("\nCeiling of key: 'g' is: " + treeMap.ceiling('g'));
         
-        //Delete min and print
-        System.out.println("\nDeleted min key char: " + treeMap.min());
-        treeMap.deleteMin();
-        System.out.println("\nNew min key char: " + treeMap.min());
-        System.out.println("\nDeleted min key char: " + treeMap.min());
-        treeMap.deleteMin();
-        System.out.println("\nNew min key char: " + treeMap.min());
+        // //Delete min and print
+        // System.out.println("\nDeleted min key char: " + treeMap.min());
+        // treeMap.deleteMin();
+        // System.out.println("\nNew min key char: " + treeMap.min());
+        // System.out.println("\nDeleted min key char: " + treeMap.min());
+        // treeMap.deleteMin();
+        // System.out.println("\nNew min key char: " + treeMap.min());
         
-        //Delete max and print
-        System.out.println("\nDeleted max key char: " + treeMap.max());
-        treeMap.deleteMax();
-        System.out.println("\nNew max key char: " + treeMap.max());
-        System.out.println("\nDeleted max key char: " + treeMap.max());
-        treeMap.deleteMax();
-        System.out.println("\nNew max key char: " + treeMap.max());
-        // check tree size counts -> 6
-        System.out.println("\nNumber of Tree Elements: " + treeMap.size());
+        // //Delete max and print
+        // System.out.println("\nDeleted max key char: " + treeMap.max());
+        // treeMap.deleteMax();
+        // System.out.println("\nNew max key char: " + treeMap.max());
+        // System.out.println("\nDeleted max key char: " + treeMap.max());
+        // treeMap.deleteMax();
+        // System.out.println("\nNew max key char: " + treeMap.max());
+        // // check tree size counts -> 6
+        // System.out.println("\nNumber of Tree Elements: " + treeMap.size());
+
+        System.out.println("\n\nDelete element d: ");
+        treeMap.delete('d');
+        System.out.println("\nIn order traversal without d: ");
+        treeMap.printInOrderKeys();
     }
 }
