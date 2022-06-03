@@ -1,5 +1,8 @@
 package TreeStructures;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BST<Key extends Comparable<Key>, Value>{
     private Node root;
 
@@ -88,7 +91,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         if(t != null) return t;
         else return x;
     }
-
+    //* ceiling() */
     public Key ceiling(Key key){
         Node x = ceiling(this.root, key);
         if(x == null) return null;
@@ -218,6 +221,25 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.print(x.val + " ");
     }
 
+    //? Key Ranges
+    public Iterable<Key> keys(){
+        return keys(min(), max());
+    }
+    public Iterable<Key> keys(Key lo, Key hi){
+        Queue<Key> q = new LinkedList<>();
+        keys(root, lo, hi, q);
+        return q;
+    }
+    private void keys(Node x,  Key lo, Key hi, Queue<Key> q){
+        if(x == null) return;
+        int loLimit = lo.compareTo(x.key);
+        int hiLimit = hi.compareTo(x.key);
+        //* In order traversal & add keys in range */
+        if(loLimit < 0) keys(x.left, lo, hi, q);
+        if(loLimit <= 0 && hiLimit >= 0) q.add(x.key);
+        if(hiLimit > 0) keys(x.right, lo, hi, q);
+    }
+
     public static void main(String[] args){
         //Construct a new BST
         BST<Character, String> treeMap = new BST<>();
@@ -286,9 +308,15 @@ public class BST<Key extends Comparable<Key>, Value>{
         // // check tree size counts -> 6
         // System.out.println("\nNumber of Tree Elements: " + treeMap.size());
 
-        System.out.println("\n\nDelete element d: ");
-        treeMap.delete('d');
-        System.out.println("\nIn order traversal without d: ");
-        treeMap.printInOrderKeys();
+        // System.out.println("\n\nDelete element d: ");
+        // treeMap.delete('d');
+        // System.out.println("\nIn order traversal without d: ");
+        // treeMap.printInOrderKeys();
+
+        //Print out keys with iterable:
+        System.out.println();
+        for(char k : treeMap.keys('d', 'i')){
+            System.out.print(k + " ");
+        }
     }
 }
