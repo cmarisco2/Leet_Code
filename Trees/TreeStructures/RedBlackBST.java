@@ -29,7 +29,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value>{
         root.color = BLACK;
     }
     
-    //! Need to update w/ ROTATIONS
+    //* Modified with ROTATIONS */
     private Node put(Node x, Key key, Value val) {
         if (x == null)
             return new Node(key, val, 1, RED);
@@ -40,7 +40,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value>{
             x.right = put(x.right, key, val);
         else
             x.val = val;
-        //* Code to maintain balance */
+        //* Code to maintain balance ON WAY UP*/
         if(isRed(x.right) && !isRed(x.left)) x = leftRotate(x);
         if(isRed(x.left) && isRed(x.left.left)) x = rightRotate(x);
         if(isRed(x.left) && isRed(x.right)) flipColors(x);
