@@ -115,6 +115,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         Node t = min(this.root);
         if(t == x.left) x.left = t.right;
         x.left = deleteMin(x.left);
+        x.size = size(x.left) + size(x.right) + 1;
         return x;
     }
     //* deleteMax() */
@@ -126,6 +127,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         Node t = max(this.root);
         if(t == x.right) x.right = t.left;
         x.right = deleteMax(x.right);
+        x.size = size(x.left) + size(x.right) + 1;
         return x;
     }
 
@@ -173,23 +175,23 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.println("\nNumber of Tree Elements: " + treeMap.size());
         System.out.println("\nMinimum Char entered: " + treeMap.min());
         System.out.println("\nMaximum Char entered: " + treeMap.max());
-
+        
         //Test PreOrder Traversal
         System.out.println();
         treeMap.printPreOrderKeys(); //fdcemhirov
         System.out.println();
         treeMap.printPreOrderValues(); //associated values of preorder keys
-
+        
         // Floors
         System.out.println("\n\nFloor of key: 'b' is: " + treeMap.floor('b'));
         System.out.println("\nFloor of key: 'c' is: " + treeMap.floor('c'));
         System.out.println("\nFloor of key: 'g' is: " + treeMap.floor('g'));
-
+        
         // Ceilings
         System.out.println("\n\nCeiling of key: 'b' is: " + treeMap.ceiling('b'));
         System.out.println("\nCeiling of key: 'c' is: " + treeMap.ceiling('c'));
         System.out.println("\nCeiling of key: 'g' is: " + treeMap.ceiling('g'));
-
+        
         //Delete min and print
         System.out.println("\nDeleted min key char: " + treeMap.min());
         treeMap.deleteMin();
@@ -205,6 +207,7 @@ public class BST<Key extends Comparable<Key>, Value>{
         System.out.println("\nDeleted max key char: " + treeMap.max());
         treeMap.deleteMax();
         System.out.println("\nNew max key char: " + treeMap.max());
-        
+        // check tree size counts -> 6
+        System.out.println("\nNumber of Tree Elements: " + treeMap.size());
     }
 }
