@@ -55,5 +55,7 @@ public class UndirectedGraph {
         G.addEdge(2, 3);
         G.addEdge(2, 5);
         G.printGraph();
+        System.out.println("\nNumber of Vertices: " + G.getV());
+        System.out.println("\nNumber of Edges: " + G.getE());
     }
 }
