@@ -3,7 +3,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class UniGraph<Vertex>{
+/*
+ * Modified version of Undirected Graph using Generic Keys underscored by HashMap<Vertex, List<Vertex>> as the adjacency list
+ */
+public class UniGraph<Vertex> {
     private Map<Vertex, List<Vertex>> adj;
     private int V;
     private int E;
