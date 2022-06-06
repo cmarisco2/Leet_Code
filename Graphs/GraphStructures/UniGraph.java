@@ -34,4 +34,30 @@ public class UniGraph<Vertex>{
 
     public int getV() { return this.V; }
     public int getE() { return this.E; }
+
+    public void printGraph(){
+        for(var entry: adj.entrySet()){
+            Vertex vertex = entry.getKey();
+            System.out.print(vertex + ": [");
+            for(Vertex w: adj(vertex)){
+                System.out.print(w + " ");
+            }
+            System.out.println("]\n");
+        }
+    }
+
+    public static void main(String[] args){
+        UniGraph<String> foodGraph = new UniGraph<>();
+        foodGraph.addEdge("apple", "banana");
+        foodGraph.addEdge("apple", "kiwi");
+        foodGraph.addEdge("apple", "orange");
+        foodGraph.addEdge("banana", "grapefruit");
+        foodGraph.addEdge("banana", "grape");
+        foodGraph.addEdge("grapefruit", "grape");
+        foodGraph.addEdge("kiwi", "orange");
+        System.out.println("\nNumber of Vertices: " + foodGraph.getV());
+        System.out.println("Number of Edges: " + foodGraph.getE());
+        System.out.println();
+        foodGraph.printGraph();
+    }
 }
