@@ -35,6 +35,14 @@ public class UniGraph<Vertex> {
         return adj.get(v);
     }
 
+    public List<Vertex> vertices(){
+        List<Vertex> vertices = new LinkedList<>();
+        for(var entry: adj.entrySet()){
+            vertices.add(entry.getKey());
+        }
+        return vertices;
+    }
+
     public int getV() { return this.V; }
     public int getE() { return this.E; }
 
