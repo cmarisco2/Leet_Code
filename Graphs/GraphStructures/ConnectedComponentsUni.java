@@ -46,16 +46,30 @@ public class ConnectedComponentsUni<Vertex>{
 
     public static void main(String[] args) {
         UniGraph<String> foodGraph = new UniGraph<>();
-        foodGraph.addEdge("apple", "banana");
         foodGraph.addEdge("apple", "kiwi");
         foodGraph.addEdge("apple", "orange");
-        foodGraph.addEdge("banana", "grapefruit");
-        foodGraph.addEdge("banana", "grape");
+        foodGraph.addEdge("orange", "kiwi");
         foodGraph.addEdge("grapefruit", "grape");
-        foodGraph.addEdge("kiwi", "orange");
+
         System.out.println("\nNumber of Vertices: " + foodGraph.getV());
         System.out.println("Number of Edges: " + foodGraph.getE());
         System.out.println();
         foodGraph.printGraph();
+
+        ConnectedComponentsUni cc = new ConnectedComponentsUni(foodGraph);
+        System.out.println();
+        String v = "apple", w = "kiwi", z = "grape";
+        System.out.println("Component " + v + " is connected to " + w + "?:\n");
+        System.out.println(cc.connected(v, w));
+        System.out.println();
+        System.out.println("id of " + v + " is: " + cc.id(v));
+        System.out.println("id of " + w + " is: " + cc.id(w));
+        System.out.println();
+        System.out.println("Component " + v + " is connected to " + z + "?:\n");
+        System.out.println(cc.connected(v, z));
+        System.out.println();
+        System.out.println("id of " + v + " is: " + cc.id(v));
+        System.out.println("id of " + z + " is: " + cc.id(z));
+        System.out.print("\nNumber of Connected Components is: " + cc.count());
     }
 }
