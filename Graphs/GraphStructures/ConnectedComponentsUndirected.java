@@ -18,6 +18,21 @@ public class ConnectedComponentsUndirected{
         
     }
 
+    //Check if to vertices are connected
+    public boolean connected(int v, int w){
+        return id(v) == id(w);
+    }
+
+    //Discloses the number of connected components
+    public int count(){
+        return this.count;
+    }
+
+    //return component id
+    public int id(int v){
+        return id[v];
+    }
+
     //dfs
     public void dfs(UndirectedGraph G, int vertex) {
         marked[vertex] = true;
