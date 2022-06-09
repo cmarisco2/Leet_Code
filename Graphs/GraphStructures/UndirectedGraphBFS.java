@@ -34,4 +34,25 @@ public class UndirectedGraphBFS {
         }
         return true;
     }
+
+    public static void main(String[] args) {
+        // Create Graph G, with 6 vertices and 8 edges
+        UndirectedGraph G = new UndirectedGraph(6);
+        G.addEdge(0, 1);
+        G.addEdge(0, 4);
+        G.addEdge(0, 2);
+        G.addEdge(1, 4);
+        G.addEdge(4, 2);
+        G.addEdge(4, 3);
+        G.addEdge(2, 3);
+        G.addEdge(2, 5);
+        G.printGraph();
+        System.out.println("\nNumber of Vertices: " + G.getV());
+        System.out.println("\nNumber of Edges: " + G.getE());
+
+        System.out.println("\nRun BFS on our Graph");
+        UndirectedGraphBFS process = new UndirectedGraphBFS(G, 0);
+        System.out.println("\nIs our Graph Completely Connected: " + process.isCompletelyConnected());
+
+    }
 }
