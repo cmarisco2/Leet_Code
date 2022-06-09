@@ -70,6 +70,6 @@ public class ConnectedComponentsUndirected{
         System.out.println();
         System.out.println("id of " + v + " is: " + cc.id(v));
         System.out.println("id of " + z + " is: " + cc.id(z));
-        System.out.print("\nNumber of Connected Components is: " + cc.count());
+
     }
 }
