@@ -11,7 +11,12 @@ public class UndirectedGraphBFS {
 
         bfs(G, s);
     }
-
+    //* 1) Make queue 
+        //* Preload
+        //* Mark it
+    //* 2) While Not Empty
+        //* DQ
+        //* for all adj IFF not marked -> mark, add to queue
     private void bfs(UndirectedGraph G, int s){
         Queue<Integer> q = new LinkedList<>();
         q.add(s);
