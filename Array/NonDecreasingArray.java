@@ -22,11 +22,15 @@
 // Need to make choice
 //*     i, i+1
 //* [3, 4, 2] -> premote right of i to i will work ^R : [3, 4, 4]
+    // because demoting i's val will still lead to false
+
 //* [1, 4, 2] -> demote i to right of i will work 👇 L : [1, 2, 2]
-//
+    // default choice if no bigger value preceeds
 //*  Otherwise, check [i] <= [i + 1]
 
-//? Solution:
+//? Solution Complexity:
+//* Linear TC -> O(N)
+//* Constant SC -> O(1)
 
 public class NonDecreasingArray{
     public boolean checkPossibility(int[] nums) {
