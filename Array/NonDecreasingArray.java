@@ -28,3 +28,27 @@
 
 //? Solution:
 
+public class NonDecreasingArray{
+    public boolean checkPossibility(int[] nums) {
+        if (nums == null)
+            return false;
+        if (nums.length <= 2)
+            return true;
+        boolean changed = false;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] <= nums[i + 1])
+                continue;
+            if (changed)
+                return false;
+
+            changed = true;
+            if (i == 0 || nums[i + 1] >= nums[i - 1])
+                nums[i] = nums[i + 1];
+            else
+                nums[i + 1] = nums[i];
+        }
+
+        return true;
+    }
+}
